@@ -1,0 +1,23 @@
+.imglogo {
+  aling:center;
+  display: block;
+  margin: 0 auto;
+  
+}
+.padre {
+  height: 150px;
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hijo {
+  border-radius: 25px 25px 25px 25px; 
+  background-color:rgb(255,0,0);
+   opacity:0.8; /* Opacidad 60% */
+  
+}
+ .h4 {
+ color: #17a2b8; }
+
