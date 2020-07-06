@@ -1,0 +1,14 @@
+#Poligran 2020
+version: "3.8"
+services:
+  trabajo_integracion:
+    image: fuyuanli/xampp
+    volumes:
+      - type: bind
+        source: C:\segundo semestre ing software\INTEGRACION CONTINUA\MYBIKE DANY ULTIMA\MyBike 
+        # Directorio donde tienen el codigo
+        target: /opt/lampp/htdocs
+    ports: # 80 (HTTP),443(HTTPS),3306(MariaDB/MySQL) 
+        - "80:80" #pagina web
+        - "443:443" #pagina web
+        - "3306:3306" # db (opcional)
