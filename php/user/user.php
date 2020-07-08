@@ -3,7 +3,7 @@
 	
  	if (isset($_SESSION['usuario'])){
         
-        if ($_SESSION['usuario']['typeUser'] != "2"){
+        if ($_SESSION['usuario']['typeuser'] != "Usuario"){
 			header('Location: ../admin/admin.php'); 			
  		}
 
@@ -22,7 +22,7 @@
     <title>My Bike</title>
 </head>
 <body>
-    <h1>Bienvenido usuario <?php echo $_SESSION['usuario']['firstname'] ?></h1>
+    <h1>Bienvenido usuario <?php echo $_SESSION['usuario']['fullname'] ?></h1>
     <a href="../exit.php">Cerrar sesión</a>
 </body>
 </html>
