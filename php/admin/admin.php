@@ -3,7 +3,7 @@
 	
  	if (isset($_SESSION['usuario'])){
         
-        if ($_SESSION['usuario']['typeUser'] != "1"){
+        if ($_SESSION['usuario']['typeuser'] != "Administrador"){
 			header('Location: ../user/user.php'); 			
  		}
 
@@ -33,7 +33,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">¡Hola <?php echo $_SESSION['usuario']['firstname'] ?>!</a>
+            <a class="nav-link" href="#">¡Hola <?php echo $_SESSION['usuario']['fullname'] ?>!</a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,17 +57,18 @@
     </nav>
     <!-- Navbar -->
     <!-- Table users -->
-    <table class="table">
+    <table class="table" id="search-result">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Cédula</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Bici</th>
-                <th scope="col">Código</th>
+                <th scope="col">Serial</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="container">
             <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
@@ -94,6 +95,14 @@
             </tr>
         </tbody>
     </table>
+    <!-- Para pintar -->
+    <!-- <div class="col-md-7">
+        <div class="card my-4" id="search-result">
+            <div class="card-body">
+                <ul id="container"></ul>
+            </div>
+        </div>
+    </div> -->
     <!-- Table users -->
     <!-- Modal created user -->
     <!-- Modal -->
@@ -107,67 +116,65 @@
             </button>
         </div>
         <div class="modal-body">
-        <form>
-        <div class="row">
-            <div class="col">
-            <input type="text" class="form-control" placeholder="Nombre">
+        <form id="user-form">
+            <div class="row">
+                <div class="col">
+                <input type="text" class="form-control" placeholder="Nombre completo" id="fullname">
+                </div>
             </div>
-            <div class="col">
-            <input type="text" class="form-control" placeholder="Apellido">
+            <div class="row mt-3">
+                <div class="col">
+                    <select class="form-control" id="typeid">
+                        <option selected>Tipo de identificación</option>
+                        <option>Cédula de ciudadanía</option>
+                        <option>Tarjeta de identidad</option>
+                        <option>Pasaporte</option>
+                    </select>
+                </div>
+                <div class="col">
+                <input type="number" class="form-control" placeholder="Número de identificación" id="id">
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <select id="inputState" class="form-control">
-                    <option selected>Tipo de identificación</option>
-                    <option name="cedula">Cédula de ciudadanía</option>
-                    <option name="tarjeta">Tarjeta de identidad</option>
-                    <option name="pasaporte">Pasaporte</option>
-                </select>
+            <div class="row mt-3">
+                <div class="col">
+                    <select class="form-control" id="typebike">
+                        <option selected>Tipo de bicicleta</option>
+                        <option>GW</option>
+                        <option>Cannondale</option>
+                        <option>Trek</option>
+                        <option>Optimus</option>
+                        <option>Otra</option>
+                    </select>
+                </div>
+                <div class="col">
+                <input type="number" class="form-control" placeholder="Número de serie" id="serialbike">
+                </div>
             </div>
-            <div class="col">
-            <input type="number" class="form-control" placeholder="Número de identificación">
+            <div class="row mt-3">
+                <div class="col">
+                <input type="text" class="form-control" placeholder="Teléfono" id="numberphone">
+                </div>
+                <div class="col">
+                <input type="text" class="form-control" placeholder="Contraseña" id="pass">
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <select id="inputState" class="form-control">
-                    <option selected>Tipo de bicicleta</option>
-                    <option name="gw">GW</option>
-                    <option name="cannondale">Cannondale</option>
-                    <option name="trek">Trek</option>
-                    <option name="optimus">Optimus</option>
-                    <option name="otra">Otra</option>
-                </select>
+            <div class="row mt-3">
+                <div class="col">
+                    <select class="form-control" id="typeuser">
+                        <option selected>Tipo de usuario</option>
+                        <option>Usuario</option>
+                        <option>Administrador</option>
+                    </select>
+                </div>
             </div>
-            <div class="col">
-            <input type="number" class="form-control" placeholder="Número de serie">
+            
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-            <input type="number" class="form-control" placeholder="Teléfono">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Crear</button>
             </div>
-            <div class="col">
-            <input type="text" class="form-control" placeholder="Contraseña">
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <select id="inputState" class="form-control">
-                    <option selected>Tipo de usuario</option>
-                    <option name="2">Usuario</option>
-                    <option name="1">Administrador</option>
-                </select>
-            </div>
-        </div>
         </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Crear</button>
-        </div>
-        </div>
     </div>
     </div>
     <!-- Modal created user -->
