@@ -2,10 +2,10 @@
 	session_start();
 	
  	if (isset($_SESSION['usuario'])){
- 		if ($_SESSION['usuario']['typeUser'] == "1"){
+ 		if ($_SESSION['usuario']['typeuser'] == "Administrador"){
 			header('Location: admin/admin.php'); 			
  		}
- 		else if ($_SESSION['usuario']['typeUser'] == "2") {
+ 		else if ($_SESSION['usuario']['typeuser'] == "Usuario") {
  			header('Location: user/user.php');
  		}
  	}
